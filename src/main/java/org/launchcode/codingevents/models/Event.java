@@ -23,13 +23,14 @@ public class Event {
     private String contactEmail;
 
     @NotBlank(message = "Location is required")
-    private String Location;
+    private String location;
 
-    @AssertTrue
-    private boolean mustRegister;
+    @AssertTrue(message = "Must be true")
+    private boolean registrationRequired;
 
-    @Positive
+    @Min(value=1, message="need at least 1 attendee")
     private int attendees;
+
 
     public Event(String name, String description, String contactEmail) {
         this();
@@ -69,6 +70,29 @@ public class Event {
 
     public int getId() {
         return id;
+    }
+
+    public boolean isRegistrationRequired() {
+        return registrationRequired;
+    }
+
+    public void setRegistrationRequired(boolean registrationRequired) {
+        this.registrationRequired = registrationRequired;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) { this.location = location;
+    }
+
+    public int getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(int attendees) {
+        this.attendees = attendees;
     }
 
     @Override
